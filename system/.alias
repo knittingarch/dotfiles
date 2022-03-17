@@ -1,16 +1,18 @@
 # Shortcuts
-
-alias branch="git branch | grep '^\*' | sed 's/* //'"
-alias gb="git branch"
-alias gc="git checkout"
-alias gs="git status"
-alias force="git push --force-with-lease"
 alias ports="lsof -n +c 15 | grep LISTEN"
 alias reload="source ~/.bash_profile"
 
-# Rails Specific Shortcuts
+# Git Specific Shortcuts
+alias gb="git branch"
+alias gc="git checkout"
+alias gl="git log"
+alias gs="git status"
+alias force="git push --force-with-lease"
+alias tree="git branch | grep '^\*' | sed 's/* //'"
 
+# Rails Specific Shortcuts
 alias berd="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate"
 alias berdseed="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed"
-alias run-fail="bin/rspec --only"
 
+# Rspec Specific Shortcuts
+alias run-fail="bin/rspec --only"
