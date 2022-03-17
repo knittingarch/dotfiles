@@ -9,5 +9,5 @@ DOTFILESDIR="$(pwd -P)"
 # Symlink directory to Home directory
 
 ln -sf "$DOTFILESDIR" "$HOME/dotfiles"
-ln -sf "$DOTFILESDIR/runcom/.bash_profile" "$HOME/.bash_profile"
+ln -sf "$DOTFILESDIR/runcom/.bashrc" "$HOME/.bashrc"
 
