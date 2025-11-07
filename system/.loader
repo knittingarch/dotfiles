@@ -1,0 +1,15 @@
+# Source the dotfiles (order matters)
+
+DOTFILES_DIR="$HOME/dotfiles"
+
+DOTFILES_GLOB='.function .function_* .path .env .alias .fnm .grep .prompt .completion .fix .custom'
+
+if [ -n "$ZSH_VERSION" ]; then
+  for DOTFILE in $DOTFILES_DIR/system/.{function,function_*,path,env,alias,fnm,grep,prompt,completion,fix,custom}(N); do
+    [ -f "$DOTFILE" ] && source "$DOTFILE"
+  done
+else
+  for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,fnm,grep,prompt,completion,fix,custom}; do
+    [ -f "$DOTFILE" ] && . "$DOTFILE"
+  done
+fi
