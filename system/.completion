@@ -1,0 +1,35 @@
+# Shell-specific completions
+
+if [ -n "$ZSH_VERSION" ]; then
+  # Zsh completions
+  autoload -U compinit && compinit
+  
+  # Load git completions for zsh if available
+  [ -f ~/.git-completion.zsh ] && source ~/.git-completion.zsh
+  
+  # Enable zsh completion features
+  setopt AUTO_MENU
+  setopt AUTO_LIST
+  setopt COMPLETE_IN_WORD
+  setopt ALWAYS_TO_END
+  
+  # Case-insensitive completion
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+  
+  # Colorize completions
+  zstyle ':completion:*' list-colors ''
+  
+elif [ -n "$BASH_VERSION" ]; then
+  # Bash completions
+  [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
+  
+  # Enable bash completion if available
+  if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+  fi
+  
+  # macOS bash completion
+  if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+  fi
+fi
