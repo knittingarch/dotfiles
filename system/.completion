@@ -4,8 +4,13 @@ if [ -n "$ZSH_VERSION" ]; then
   # Zsh completions
   autoload -U compinit && compinit
   
-  # Load git completions for zsh if available
-  [ -f ~/.git-completion.zsh ] && source ~/.git-completion.zsh
+  # For zsh, git completion is usually built-in or handled by oh-my-zsh
+  # If you have a custom git completion, load it properly:
+  if [ -f ~/.git-completion.zsh ]; then
+    # Rename to _git and place in fpath, or use zsh's built-in git completion
+    fpath=(~/.zsh $fpath)
+    autoload -U _git
+  fi
   
   # Enable zsh completion features
   setopt AUTO_MENU
