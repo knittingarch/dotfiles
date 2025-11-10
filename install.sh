@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # Download git completions for bash
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+curl -s https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
-# Download git completions for zsh (if zsh is available)
-if command -v zsh >/dev/null 2>&1; then
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh -o ~/.git-completion.zsh
-fi
+# For zsh, we'll rely on built-in git completion instead of downloading
+# The downloaded zsh completion file often causes conflicts
+echo "Zsh will use built-in git completion (no download needed)"
 
 
 # Absolute path of dotfiles directory

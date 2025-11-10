@@ -24,7 +24,12 @@ My personal configuration settings for both **bash** and **zsh** shells.
    ./install.sh
    ```
 
-3. Switch to zsh (optional but recommended):
+3. **If you had previous git completion issues**, clean up:
+   ```bash
+   rm -f ~/.git-completion.zsh
+   ```
+
+4. Switch to zsh (if necessary):
    ```bash
    chsh -s $(which zsh)
    ```
@@ -54,10 +59,10 @@ hostname:/current/path (git-branch) [💩] $
 ```
 
 **Colors:**
-- **Hostname**: Dark orange (256-color: 166)
+- **Hostname**: Medium grey (256-color: 244)
 - **Path**: Lavender purple (256-color: 141)
-- **Git branch**: Medium grey (256-color: 244)
-- **Dirty indicator**: Light orange/peach (256-color: 216)
+- **Git branch**: Dark orange (256-color: 166)
+- **Dirty indicator**: Deep orange (256-color: 202)
 
 The **💩 emoji** appears when you have uncommitted git changes.
 
@@ -88,10 +93,10 @@ Edit `/system/.prompt` and modify the color codes:
 
 ```bash
 # For zsh (256-color format)
-PROMPT='%F{166}%m%f:%F{141}%~%f%F{244}$vcs_info_msg_0_%f%F{216}$(__git_dirty)%f $ '
+PROMPT='%F{244}%m%f:%F{141}%~%f%F{166}$vcs_info_msg_0_%f%F{202}$(__git_dirty)%f $ '
 
 # For bash (256-color format)
-PS1="\[\033[38;5;166m\]\h\[\033[0m\]:\[\033[38;5;141m\]\w\[\033[38;5;244m\]\$(__git_branch)\[\033[38;5;216m\]\$(__git_dirty)\[\033[0m\] $ "
+PS1="\[\033[38;5;244m\]\h\[\033[0m\]:\[\033[38;5;141m\]\w\[\033[38;5;166m\]\$(__git_branch)\[\033[38;5;202m\]\$(__git_dirty)\[\033[0m\] $ "
 ```
 
 ### Adding Custom Aliases

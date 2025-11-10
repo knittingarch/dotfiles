@@ -1,7 +1,7 @@
 # Git prompt functions (shell-agnostic)
 function __git_dirty {
   git diff --quiet HEAD &>/dev/null
-  [ $? == 1 ] && echo " [💩]"
+  [ $? -eq 1 ] && echo " [💩]"
 }
 
 function __git_ps1 ()
@@ -65,7 +65,7 @@ if [ -n "$ZSH_VERSION" ]; then
   zstyle ':vcs_info:*' enable git
 
   # Zsh prompt with 256-color palette
-  PROMPT='%F{166}%m%f:%F{141}%~%f%F{244}$vcs_info_msg_0_%f%F{216}$(__git_dirty)%f $ '
+  PROMPT='%F{244}%m%f:%F{141}%~%f%F{166}$vcs_info_msg_0_%f%F{202}$(__git_dirty)%f $ '
 else
   # Bash prompt configuration
   bash_prompt() {
@@ -105,7 +105,7 @@ else
     [ $UID -eq "0" ] && UC=$R   # root's color
 
     # Bash prompt with 256-color palette
-    PS1="\[\033[38;5;166m\]\h\[\033[0m\]:\[\033[38;5;141m\]\w\[\033[38;5;244m\]\$(__git_branch)\[\033[38;5;216m\]\$(__git_dirty)\[\033[0m\] $ "
+    PS1="\[\033[38;5;244m\]\h\[\033[0m\]:\[\033[38;5;141m\]\w\[\033[38;5;166m\]\$(__git_branch)\[\033[38;5;202m\]\$(__git_dirty)\[\033[0m\] $ "
   }
 
   bash_prompt
