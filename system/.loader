@@ -2,10 +2,10 @@
 
 DOTFILES_DIR="$HOME/dotfiles"
 
-DOTFILES_GLOB='.function .function_* .path .env .alias .fnm .grep .prompt .completion .fix .custom'
+DOTFILES_GLOB='.function .function_* .path .env .alias .fnm .grep .prompt .completion .fix .custom .zsh_config'
 
 if [ -n "$ZSH_VERSION" ]; then
-  for DOTFILE in $DOTFILES_DIR/system/.{function,function_*,path,env,alias,fnm,grep,prompt,completion,fix,custom}(N); do
+  for DOTFILE in $DOTFILES_DIR/system/.{function,function_*,path,env,alias,fnm,grep,zsh_config,prompt,completion,fix,custom}(N); do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
   done
 else

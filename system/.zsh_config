@@ -1,0 +1,36 @@
+# Zsh-specific options and configurations
+
+if [ -n "$ZSH_VERSION" ]; then
+  # History settings
+  HISTSIZE=10000
+  SAVEHIST=10000
+  HISTFILE=~/.zsh_history
+  
+  # History options
+  setopt APPEND_HISTORY
+  setopt SHARE_HISTORY
+  setopt HIST_EXPIRE_DUPS_FIRST
+  setopt HIST_IGNORE_DUPS
+  setopt HIST_IGNORE_ALL_DUPS
+  setopt HIST_FIND_NO_DUPS
+  setopt HIST_SAVE_NO_DUPS
+  setopt HIST_REDUCE_BLANKS
+  setopt HIST_VERIFY
+  setopt EXTENDED_HISTORY
+  
+  # Directory navigation
+  setopt AUTO_CD
+  setopt AUTO_PUSHD
+  setopt PUSHD_IGNORE_DUPS
+  setopt PUSHD_SILENT
+  
+  # Globbing options
+  setopt EXTENDED_GLOB
+  setopt NULL_GLOB
+  
+  # Other useful options
+  setopt CORRECT
+  setopt INTERACTIVE_COMMENTS
+  setopt MULTIOS
+  setopt NO_BEEP
+fi

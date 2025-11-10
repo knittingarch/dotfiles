@@ -1,6 +1,12 @@
 #!/bin/bash
 
+# Download git completions for bash
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
+# Download git completions for zsh (if zsh is available)
+if command -v zsh >/dev/null 2>&1; then
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh -o ~/.git-completion.zsh
+fi
 
 
 # Absolute path of dotfiles directory
