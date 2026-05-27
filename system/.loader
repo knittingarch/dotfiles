@@ -2,14 +2,49 @@
 
 DOTFILES_DIR="$HOME/dotfiles"
 
-DOTFILES_GLOB='.function .function_* .path .env .alias .fnm .grep .prompt .completion .fix .custom .zsh_config'
-
-if [ -n "$ZSH_VERSION" ]; then
-  for DOTFILE in $DOTFILES_DIR/system/.{function,function_*,path,env,alias,fnm,grep,zsh_config,prompt,completion,fix,custom}(N); do
-    [ -f "$DOTFILE" ] && source "$DOTFILE"
-  done
+if [ -n "${ZSH_VERSION:-}" ]; then
+  CURRENT_SHELL="zsh"
+elif [ -n "${BASH_VERSION:-}" ]; then
+  CURRENT_SHELL="bash"
 else
-  for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,fnm,grep,prompt,completion,fix,custom}; do
+  CURRENT_SHELL="sh"
+fi
+
+# Shared files: must stay portable across bash and zsh
+for DOTFILE in \
+  "$DOTFILES_DIR/system/.function" \
+  "$DOTFILES_DIR/system/.path" \
+  "$DOTFILES_DIR/system/.env" \
+  "$DOTFILES_DIR/system/.alias" \
+  "$DOTFILES_DIR/system/.custom"
+do
+  [ -f "$DOTFILE" ] && . "$DOTFILE"
+done
+
+for DOTFILE in "$DOTFILES_DIR"/system/.function_*; do
+  [ -e "$DOTFILE" ] || continue
+  [ -f "$DOTFILE" ] && . "$DOTFILE"
+done
+
+if [ "$CURRENT_SHELL" = "bash" ]; then
+  for DOTFILE in \
+    "$DOTFILES_DIR/system/.bash" \
+    "$DOTFILES_DIR"/system/.bash_*
+  do
+    [ -e "$DOTFILE" ] || continue
+    [ -f "$DOTFILE" ] && . "$DOTFILE"
+  done
+fi
+
+if [ "$CURRENT_SHELL" = "zsh" ]; then
+  for DOTFILE in \
+    "$DOTFILES_DIR/system/.fnm" \
+    "$DOTFILES_DIR/system/.grep" \
+    "$DOTFILES_DIR/system/.zsh_config" \
+    "$DOTFILES_DIR/system/.prompt" \
+    "$DOTFILES_DIR/system/.completion" \
+    "$DOTFILES_DIR/system/.fix"
+  do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
   done
 fi
