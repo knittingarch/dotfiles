@@ -16,7 +16,9 @@ for DOTFILE in \
   "$DOTFILES_DIR/system/.path" \
   "$DOTFILES_DIR/system/.env" \
   "$DOTFILES_DIR/system/.alias" \
-  "$DOTFILES_DIR/system/.custom"
+  "$DOTFILES_DIR/system/.custom" \
+  "$DOTFILES_DIR/system/.prompt" \
+  "$DOTFILES_DIR/system/.completion"
 do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
@@ -41,8 +43,6 @@ if [ "$CURRENT_SHELL" = "zsh" ]; then
     "$DOTFILES_DIR/system/.fnm" \
     "$DOTFILES_DIR/system/.grep" \
     "$DOTFILES_DIR/system/.zsh_config" \
-    "$DOTFILES_DIR/system/.prompt" \
-    "$DOTFILES_DIR/system/.completion" \
     "$DOTFILES_DIR/system/.fix"
   do
     [ -f "$DOTFILE" ] && . "$DOTFILE"

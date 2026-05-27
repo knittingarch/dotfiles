@@ -1,1 +1,1 @@
-[ -f "$HOME/dotfiles/system/.loader" ] && source "$HOME/dotfiles/system/.loader"
+[ -f "$HOME/dotfiles/system/.loader" ] && . "$HOME/dotfiles/system/.loader"
