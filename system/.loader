@@ -4,6 +4,7 @@ DOTFILES_DIR="$HOME/dotfiles"
 
 if [ -n "${ZSH_VERSION:-}" ]; then
   CURRENT_SHELL="zsh"
+    setopt LOCAL_OPTIONS NULL_GLOB  # Prevent "no matches found" errors
 elif [ -n "${BASH_VERSION:-}" ]; then
   CURRENT_SHELL="bash"
 else
